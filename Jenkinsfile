@@ -1,7 +1,6 @@
 pipeline {
 agent any
 
-```
 tools {
     maven 'maven'
     jdk 'java'
@@ -29,6 +28,6 @@ post {
         echo 'Build failed. Check logs above.'
     }
 }
-```
+
 
 }
