@@ -1,33 +1,34 @@
-```groovy
 pipeline {
-    agent any
+agent any
 
-    tools {
-        maven 'maven'
-        jdk 'java'
-    }
+```
+tools {
+    maven 'maven'
+    jdk 'java'
+}
 
-    stages {
-        stage('Build & Test') {
-            steps {
-                sh 'mvn clean install'
-            }
-        }
-
-        stage('Deploy (Optional)') {
-            steps {
-                echo 'Deployment stage (add steps if needed)'
-            }
+stages {
+    stage('Build & Test') {
+        steps {
+            sh 'mvn clean install'
         }
     }
 
-    post {
-        success {
-            echo '✅ Pipeline completed successfully!'
-        }
-        failure {
-            echo '❌ Build failed. Check logs above.'
+    stage('Deploy (Optional)') {
+        steps {
+            echo 'Deployment stage (add steps if needed)'
         }
     }
 }
+
+post {
+    success {
+        echo 'Pipeline completed successfully!'
+    }
+    failure {
+        echo 'Build failed. Check logs above.'
+    }
+}
 ```
+
+}
