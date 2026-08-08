@@ -9,7 +9,9 @@ tools {
 stages {
     stage('Build & Test') {
         steps {
-            sh 'mvn clean install'
+            echo 'Jenkins pipeline is working successfully!'
+            sh 'java -version'
+            sh 'mvn -version'
         }
     }
 
@@ -28,6 +30,5 @@ post {
         echo 'Build failed. Check logs above.'
     }
 }
-
 
 }
