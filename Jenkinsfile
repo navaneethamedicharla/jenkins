@@ -1,3 +1,4 @@
+```groovy
 pipeline {
     agent any
 
@@ -7,33 +8,26 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'master',
-                    url: 'git@github.com:codefeeding99/Testing-and-Builing-using-pipe-line.git',
-                    credentialsId: 'pipeline key'
-            }
-        }
-
         stage('Build & Test') {
             steps {
-                bat 'mvn clean install'
+                sh 'mvn clean install'
             }
         }
 
         stage('Deploy (Optional)') {
             steps {
-                echo " Deployment stage (add steps if needed)"
+                echo 'Deployment stage (add steps if needed)'
             }
         }
     }
 
     post {
         success {
-            echo "✅ Pipeline completed successfully!"
+            echo '✅ Pipeline completed successfully!'
         }
         failure {
-            echo "❌ Build failed. Check logs above."
+            echo '❌ Build failed. Check logs above.'
         }
     }
 }
+```
